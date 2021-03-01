@@ -10,7 +10,7 @@ module.exports = {
   discountTotal: function(price, discount, threshold){
     if(price > threshold){
       let reducedPrice = discount*price;
-      return (price - reducedPrice).toFixed(2);
+      return (price - reducedPrice);
     }
     return price;
   }

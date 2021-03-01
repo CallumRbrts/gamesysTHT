@@ -2,6 +2,10 @@ var express = require('express');
 var app = express();
 //var {user, password, dbname, secretKey, apiKey, searchAPIkey} = require('./config.json');
 const mongoManager = require('./js/mongoManager.js');
+//needed here due to threading issues
+mongoManager.emptyCollection('books');
+mongoManager.emptyCollection('discounts');
+
 const expressValidator = require('express-validator');
 var session = require('express-session');
 const MongoClient = require('mongodb').MongoClient;
@@ -11,6 +15,8 @@ var port = PORT;
 
 const Book = require('./js/book.js');
 const Discount = require('./js/discount.js');
+
+
 var {allBooks, allDiscounts} = require('./js/factory.js');
 
 function initCheckboxes(){
@@ -25,16 +31,14 @@ function initCheckboxes(){
 }
 const checkboxes = initCheckboxes();
 
-async function init(){
-  await mongoManager.emptyCollection('books');
-  await mongoManager.emptyCollection('discounts');
-}
-init().then(async function(){
-  await mongoManager.addToDB('discounts', allDiscounts);
-  await mongoManager.addToDB('books', allBooks);
-}
-
-);
+// async function init(){
+//   await mongoManager.emptyCollection('books');
+//   await mongoManager.emptyCollection('discounts');
+// }
+// init().then(async function(){
+//   await mongoManager.addToDB('discounts', allDiscounts);
+//   await mongoManager.addToDB('books', allBooks);
+// });
 
 
 
@@ -96,7 +100,7 @@ app.route('/')
     var total = calculateTotal.calcTotal(bookObjects,dis);
     console.log(total);
     var final = calculateTotal.discountTotal(total, 0.05, 30);
-    console.log(final);
+    console.log(final.toFixed(2));
 
 
 

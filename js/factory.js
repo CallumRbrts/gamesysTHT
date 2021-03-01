@@ -1,5 +1,7 @@
 const Book = require('./book.js');
 var Discount = require('./discount.js');
+const mongoManager = require('./mongoManager.js');
+
 
 var allBooks = [];
 var allDiscounts = [];
@@ -19,6 +21,8 @@ allBooks.push(new Book("Great Expectations", 2000, 13.21));
 
 allDiscounts.push(new Discount("Books after year 2000", 0.10));
 allDiscounts.push(new Discount("Over £30 deal", 0.05));
+
+
 
 // exports.allBooks = allBooks;
 // exports.allDiscounts = allDiscounts;

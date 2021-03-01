@@ -8,7 +8,7 @@ class Book {
 
   calcPrice(discount){
     if(this.year > 2000){
-      reducedPrice = discount*this.price
+      let reducedPrice = discount*this.price
       //test if toFixed works
       return (this.price - reducedPrice).toFixed(2);
     }else{

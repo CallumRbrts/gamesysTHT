@@ -4,7 +4,7 @@ class Discount{
     this.name = name;
     this.percentage = percentage;
   }
-  // 
+  //
   // get name(){
   //   return this.name;
   // }
@@ -13,3 +13,6 @@ class Discount{
   // }
 }
 module.exports = Discount;
+
+//potentially create an extends class thing to then override the apply discount function
+//instead of using calculateTotal.discountTotal

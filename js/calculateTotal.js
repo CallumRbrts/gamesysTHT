@@ -1,15 +1,16 @@
 module.exports = {
-  calcTotal: function(books){
+  calcTotal: function(books, discount){
     var total = 0;
     for(var i = 0; i < books.length; ++i){
-      total += books[i].calcPrice();
+      //total += books[i].calcPrice();
+      total += books[i].calcPrice(discount.percentage);
     }
-    console.log(total);
+    return total;
   },
   discountTotal: function(price, discount, threshold){
     if(price > threshold){
-      let reducedPrice = discount*price
-      return price - reducedPrice;
+      let reducedPrice = discount*price;
+      return (price - reducedPrice).toFixed(2);
     }
     return price;
   }

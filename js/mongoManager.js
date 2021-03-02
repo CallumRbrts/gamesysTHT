@@ -15,7 +15,7 @@ module.exports = {
       db.close();
     });
   },
-  emptyCollection: function(collection){
+  emptyCollection: async function(collection){
     MongoClient.connect(uri, async function(err, db){
       if(err) throw err;
       var dbo = db.db(dbname);

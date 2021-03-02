@@ -3,7 +3,8 @@ module.exports = {
     var total = 0;
     for(var i = 0; i < books.length; ++i){
       //total += books[i].calcPrice();
-      total += books[i].calcPrice(discount.percentage);
+      total += discount.applyDiscount(books[i]);
+      //total += books[i].calcPrice(discount.percentage);
     }
     return total;
   },

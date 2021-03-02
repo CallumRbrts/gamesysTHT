@@ -1,4 +1,4 @@
-const Discount = require('./js/discounts/discount.js');
+const Discount = require('../discount.js');
 
 class CustomDiscount extends Discount{
   discountTotal(price, threshold){

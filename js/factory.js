@@ -23,8 +23,8 @@ allDiscounts.push(new Discount("Books after year 2000", 0.10));
 allDiscounts.push(new Discount("Over £30 deal", 0.05));
 
 //add data factory
-mongoManager.addToDB('discounts', allDiscounts);
-mongoManager.addToDB('books', allBooks);
+// mongoManager.addToDB('discounts', allDiscounts);
+// mongoManager.addToDB('books', allBooks);
 // exports.allBooks = allBooks;
 // exports.allDiscounts = allDiscounts;
 

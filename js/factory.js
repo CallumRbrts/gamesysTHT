@@ -4,7 +4,7 @@ const mongoManager = require('./mongoManager.js');
 
 
 var allBooks = [];
-var allDiscounts = [];
+// var allDiscounts = [];
 
 //could use a Date object for the year instead of an int
 allBooks.push(new Book("Moby Dick", 2000, 15.20));
@@ -18,17 +18,11 @@ allBooks.push(new Book("Idle Thoughts of an Idle Fellow", 1886, 7.32));
 allBooks.push(new Book("A Christmas Carol", 1843, 4.23));
 allBooks.push(new Book("A Tale of Two Cities", 1859, 6.32));
 allBooks.push(new Book("Great Expectations", 2000, 13.21));
-
-allDiscounts.push(new Discount("Books after year 2000", 0.10));
-allDiscounts.push(new Discount("Over £30 deal", 0.05));
-
-//add data factory
-// mongoManager.addToDB('discounts', allDiscounts);
-// mongoManager.addToDB('books', allBooks);
-// exports.allBooks = allBooks;
-// exports.allDiscounts = allDiscounts;
+//
+// allDiscounts.push(new Discount("Books after year 2000", 0.10));
+// allDiscounts.push(new Discount("Over £30 deal", 0.05));
 
 module.exports = {
-  allBooks,
-  allDiscounts
+  allBooks //,
+  //allDiscounts
 }

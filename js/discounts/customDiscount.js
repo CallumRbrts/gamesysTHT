@@ -2,7 +2,7 @@ const Discount = require('../discount.js');
 
 class CustomDiscount extends Discount{
   discountTotal(price, threshold){
-    if(price > 30){
+    if(price > threshold){
       let reducedPrice = this.percentage*price;
       return (price - reducedPrice);
     }

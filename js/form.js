@@ -1,3 +1,4 @@
+//create request
 var req;
 if (window.XMLHttpRequest) {
     req = new XMLHttpRequest();
@@ -8,6 +9,7 @@ else if (window.ActiveXObject) {
 else {
     console.log("Ajax not supported");
 }
+//state change listener
 req.onreadystatechange = function() {
   var txt = "";
   if (this.readyState == 4 && this.status == 200) {
@@ -17,6 +19,7 @@ req.onreadystatechange = function() {
   }
 };
 
+//get checked boxes
 var bookButton = document.getElementById('priceCheck');
 bookButton.onclick = function(){
   var checkboxes = document.getElementsByClassName('bookCheckbox');
@@ -26,6 +29,7 @@ bookButton.onclick = function(){
         checkboxesChecked.push(checkboxes[i].value);
      }
   }
+  //create a POST with checkboxes as parameters
   var params = 'bookArray=' + checkboxesChecked;
     req.open('POST', "/?", true);
     req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');

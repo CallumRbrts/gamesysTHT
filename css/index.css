@@ -1,0 +1,14 @@
+.center {
+  margin: auto;
+  padding: 70px 0;
+  width: 25%;
+}
+
+.textcenter{
+  text-align: center;
+}
+
+.buttonstyle {
+   margin:1rem auto;
+   display:block;
+}

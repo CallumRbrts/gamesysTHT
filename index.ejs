@@ -3,19 +3,26 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="css/styles.css" rel="stylesheet" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="css/index.css" rel="stylesheet" />
     <title>Gamesys Take Home Test</title>
   </head>
   <body>
+    <h1 class="p-5 textcenter center"> Book Shop </h1>
+    <div class="card-body p-5 center">
     <form>
+      <!-- EJS checkboxes -->
       <% for(var i = 0; i < checkboxes.length; ++i) { %>
       <%- checkboxes[i] %>
       <% }; %>
 
-      <button type="button" name="button" id="priceCheck">Check price</button>
+      <button class="btn btn-primary buttonstyle" type="button" name="button" id="priceCheck">Check price</button>
     <form>
-      <div id="answer"> The Total Price is: £<%= typeof finalPrice != 'undefined' ? finalPrice : 0 %> <div>
+      <!-- EJS checks for finalPrice, if undefined then show 0 -->
+      <div class="textcenter" id="answer"> The Total Price is: £<%= typeof finalPrice != 'undefined' ? finalPrice : 0 %> <div>
+    </div>
     <script src="js/form.js"></script>
   </body>
 </html>

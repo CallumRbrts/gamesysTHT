@@ -2,31 +2,36 @@ var {user, password, dbname} = require('../config.json');
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://"+user+":"+password+"@web-entreprise-systems.enfbr.mongodb.net/"+dbname+"?retryWrites=true&w=majority";
 
+
+//functions to access MongoDB
 module.exports = {
-  addToDB: function(collection, myobj){
-    MongoClient.connect(uri, async function(err,db){
+  //adds object to a collection
+  addToDB: async function(collection, myobj){
+  var here = await MongoClient.connect(uri,function(err,db){
       if(err) throw err;
       var dbo = db.db(dbname);
       var users = dbo.collection(collection);
-      dbo.collection(collection).insert(myobj, function(err, res){
+      var result = users.insert(myobj, function(err, res){
         if (err) throw err;
         console.log(myobj.length + " object(s) inserted");
       });
       db.close();
     });
   },
+  //empties entire collection
   emptyCollection: async function(collection){
-    MongoClient.connect(uri, async function(err, db){
+    var here = await MongoClient.connect(uri, function(err, db){
       if(err) throw err;
       var dbo = db.db(dbname);
       var users = dbo.collection(collection);
-      dbo.collection(collection).deleteMany( { }, function(err, res){
+      var result = users.deleteMany( { }, function(err, res){
         if (err) throw err;
         console.log("emptied the " + collection + " collection");
       });
       db.close();
     });
   },
+  //gets all elements from a collection, uses a callback function to process data afterwards
   getFromDB: async function(collection, callback){
     MongoClient.connect(uri, async function(err, db){
       if(err) throw err;

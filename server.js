@@ -3,7 +3,6 @@ var app = express();
 const mongoManager = require('./js/mongoManager.js');
 const expressValidator = require('express-validator');
 var session = require('express-session');
-//const MongoClient = require('mongodb').MongoClient;
 const PORT = process.env.PORT || 8000;
 var port = PORT;
 const Book = require('./js/book.js');
@@ -18,7 +17,8 @@ function initCheckboxes(){
   var checkboxes = [];
   for(var i = 0; i < allBooks.length; ++i){
 
-    var checkbox = '<div class="form-check"><input class="form-check-input bookCheckbox" type="checkbox" value="'+allBooks[i].name+'" id="check'+i+'"><label class="form-check-label" for="check'+i+'">'+allBooks[i].name +" ("+ allBooks[i].year + ") £"+ allBooks[i].price+'</label></div>';
+    var checkbox = '<li class="list-group-item rounded-0"><div class="custom-control custom-checkbox"><input class="custom-control-input bookCheckbox" id="check'+i+'" type="checkbox" value="'+allBooks[i].name+'"><label class="cursor-pointer d-block custom-control-label" for="check'+i+'">'+allBooks[i].name +" ("+ allBooks[i].year + ") £"+ allBooks[i].price+'</label></div></li>'
+
     checkboxes.push(checkbox);
 
   }
@@ -30,10 +30,9 @@ const checkboxes = initCheckboxes();
 //factory.js would ideally not exist, the aim is to show what is added to the DB and also potentially create more books
 async function init(){
   await mongoManager.emptyCollection('books');
-}
-init().then(async function(){
   await mongoManager.addToDB('books', allBooks);
-});
+}
+init()
 
 const calculateTotal = require('./js/calculateTotal.js');
 
@@ -102,12 +101,10 @@ app.route('/')
       let total = calculateTotal.calcTotal(bookObjects, booksAfter2000);
       let priceOver30 = new CustomDiscount("Price over £30", 0.05);
       let finalPrice = priceOver30.discountTotal(total, 30);
-      //let finalPrice = calculateTotal.discountTotal(total, 0.05, 30);
       console.log("The Total Price is: " + finalPrice.toFixed(2));
       res.send("The Total Price is: £" + finalPrice.toFixed(2));
     });
   });
-
 
 app.listen(PORT);
 console.log('Express server running at http://127.0.0.1:'+PORT+'/');

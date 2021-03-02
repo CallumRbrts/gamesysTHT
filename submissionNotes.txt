@@ -1,0 +1,9 @@
+READ ME:
+To run this application:
+
+1. Run "npm install"
+2. "node server.js" in directory
+3. I have provided a test mongodb user in config.json, but please keep the username and password confidential as I use this for other projects aswell
+4. If you don't want to run it with the DB, you can comment and uncomment the marked lines in server.js.
+5. I have a running version that exists on Heroku as proof that it works: https://immense-brushlands-50334.herokuapp.com/
+6. I also have a github of the sourcecode: https://github.com/CallumRbrts/gamesysTHT

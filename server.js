@@ -28,9 +28,10 @@ const checkboxes = initCheckboxes();
 
 //empty the collection then fill it
 //factory.js would ideally not exist, the aim is to show what is added to the DB and also potentially create more books
-async function init(){
-  await mongoManager.emptyCollection('books');
-  await mongoManager.addToDB('books', allBooks);
+function init(){
+  mongoManager.emptyCollection('books', function(){
+    mongoManager.addToDB('books', allBooks);
+  }); 
 }
 init()
 

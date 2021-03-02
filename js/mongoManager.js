@@ -6,8 +6,8 @@ const uri = "mongodb+srv://"+user+":"+password+"@web-entreprise-systems.enfbr.mo
 //functions to access MongoDB
 module.exports = {
   //adds object to a collection
-  addToDB: async function(collection, myobj){
-  var here = await MongoClient.connect(uri,function(err,db){
+  addToDB: function(collection, myobj){
+    MongoClient.connect(uri,function(err,db){
       if(err) throw err;
       var dbo = db.db(dbname);
       var users = dbo.collection(collection);
@@ -19,8 +19,8 @@ module.exports = {
     });
   },
   //empties entire collection
-  emptyCollection: async function(collection){
-    var here = await MongoClient.connect(uri, function(err, db){
+  emptyCollection: function(collection, callback){
+     MongoClient.connect(uri, function(err, db){
       if(err) throw err;
       var dbo = db.db(dbname);
       var users = dbo.collection(collection);
@@ -29,6 +29,7 @@ module.exports = {
         console.log("emptied the " + collection + " collection");
       });
       db.close();
+      return callback();
     });
   },
   //gets all elements from a collection, uses a callback function to process data afterwards

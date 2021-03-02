@@ -48,7 +48,7 @@ app.use(session({
   secret: "secretKey",
  }));
 app.set('view engine', 'ejs');
-//app.use(express.json())
+app.use(express.json())
 //since the content type of our form is set to x-www-form-urlencoded we need to add this
 app.use(express.urlencoded({
   extended: true
@@ -103,10 +103,11 @@ app.route('/')
       let dis = new Discount("Books after year 2000", 0.10)
       let total = calculateTotal.calcTotal(bookObjects, dis);
       let finalPrice = calculateTotal.discountTotal(total, 0.05, 30);
-      console.log(finalPrice.toFixed(2));
+      console.log("The Final Price is: " + finalPrice.toFixed(2));
+
       res.render(__dirname+'/index.ejs',{
         checkboxes: checkboxes,
-        finalPrice: finalPrice
+        finalPrice: finalPrice.toFixed(2)
       });
     });
   });

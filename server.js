@@ -31,7 +31,7 @@ const checkboxes = initCheckboxes();
 function init(){
   mongoManager.emptyCollection('books', function(){
     mongoManager.addToDB('books', allBooks);
-  }); 
+  });
 }
 init()
 
@@ -102,10 +102,16 @@ app.route('/')
       let total = calculateTotal.calcTotal(bookObjects, booksAfter2000);
       let priceOver30 = new CustomDiscount("Price over £30", 0.05);
       let finalPrice = priceOver30.discountTotal(total, 30);
-      console.log("The Total Price is: " + finalPrice.toFixed(2));
-      res.send("The Total Price is: £" + finalPrice.toFixed(2));
+      console.log("The Total Price is: " + toFixed(finalPrice, 2));
+      res.send("The Total Price is: £" + toFixed(finalPrice, 2));
     });
   });
+
+// Referenced from answer: https://stackoverflow.com/questions/4187146/truncate-number-to-two-decimal-places-without-rounding
+function toFixed(num, fixed) {
+  var re = new RegExp('^-?\\d+(?:\.\\d{0,' + (fixed || -1) + '})?');
+  return num.toString().match(re)[0];
+}
 
 app.listen(PORT);
 console.log('Express server running at http://127.0.0.1:'+PORT+'/');

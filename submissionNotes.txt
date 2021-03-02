@@ -7,3 +7,5 @@ To run this application:
 4. If you don't want to run it with the DB, you can comment and uncomment the marked lines in server.js.
 5. I have a running version that exists on Heroku as proof that it works: https://immense-brushlands-50334.herokuapp.com/
 6. I also have a github of the sourcecode: https://github.com/CallumRbrts/gamesysTHT
+7. In my code I was using .toFixed(2) to round to the number to 2 decimal points, so some results may be slightly higher because it rounds to that decimal point. For example: Buying The Terrible Privacy of Maxwell Sim, Three Men in a Boat will
+cost £24.70 instead of £24.69. So to get around this I used this function using RegExp I found from this post: https://stackoverflow.com/questions/4187146/truncate-number-to-two-decimal-places-without-rounding

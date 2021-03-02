@@ -10,7 +10,6 @@ const Book = require('./js/book.js');
 const Discount = require('./js/discount.js');
 const CustomDiscount = require('./js/discounts/customDiscount.js');
 
-
 var {allBooks, allDiscounts} = require('./js/factory.js');
 
 function initCheckboxes(){
